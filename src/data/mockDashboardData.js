@@ -1,9 +1,4 @@
-/**
- * StayEase — Isolated Mock Data for Owner & Admin Dashboards (Phase 1 Frontend Preview)
- *
- * NOTE: This data is strictly for frontend demonstration and prototyping in Phase 1.
- * It is completely isolated from future backend API and MongoDB services (Phase 2).
- */
+
 
 export const mockOwnerStats = {
   totalProperties: 4,
