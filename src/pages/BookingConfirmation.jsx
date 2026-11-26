@@ -1,14 +1,11 @@
-
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 export default function BookingConfirmation() {
   const [booking, setBooking] = useState(null);
 
   useEffect(() => {
     try {
       const savedBooking = localStorage.getItem("stayeaseLatestBooking");
-
       if (savedBooking) {
         setBooking(JSON.parse(savedBooking));
       }
@@ -46,7 +43,7 @@ export default function BookingConfirmation() {
           year: "numeric",
         })
       : "Not selected";
-
+  
   return (
     <main className="min-h-screen bg-[#fcfbf8] px-5 py-12 text-[#26382d] md:px-8">
       <div className="mx-auto max-w-3xl">
@@ -147,14 +144,12 @@ export default function BookingConfirmation() {
             >
               Back to hotel
             </Link>
-
             <Link
               to="/search"
               className="border border-[#294c3a] px-6 py-3 text-sm font-semibold text-[#294c3a] hover:bg-[#f1f4ef]"
             >
               Explore more stays
             </Link>
-
             <button
               type="button"
               onClick={() => window.print()}
