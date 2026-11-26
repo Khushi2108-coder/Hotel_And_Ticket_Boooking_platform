@@ -25,9 +25,7 @@ async function getTransporter() {
   return transporter;
 }
 
-/**
- * Send password reset email
- */
+
 export async function sendPasswordResetEmail(toEmail, resetUrl, userName) {
   const trans = await getTransporter();
 
