@@ -1,0 +1,60 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.*
+!server/.env.example
+
+# Database backups & test data
+server/data/backups/
+server/data/test-*/
+server/data/test-mongod-data/
+
+# Ignore node_modules in every folder
+**/node_modules/
+
+# Build output and archives
+**/dist/
+**/build/
+dist.zip
+
+# Ignore environment files everywhere
+**/.env
+**/.env.*
+!**/.env.example
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+
+# Archived legacy files and database dumps
+server/archive/
+
+
