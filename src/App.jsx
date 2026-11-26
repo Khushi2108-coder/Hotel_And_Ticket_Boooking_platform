@@ -60,7 +60,6 @@ function AppContent() {
           }`}
         >
           <Navbar onOpenThemeModal={() => setIsThemeModalOpen(true)} />
-
           <Routes>
             {/* Guest Stays & Booking Routes */}
             <Route path="/" element={<Home onNotify={showToast} />} />
@@ -76,14 +75,12 @@ function AppContent() {
               path="/availability"
               element={<AvailabilityCalendarPage onNotify={showToast} />}
             />
-
             {/* Authentication Routes */}
             <Route path="/login" element={<Auth />} />
             <Route path="/register" element={<Auth />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
-
             {/* Protected Customer Profile */}
             <Route
               path="/profile"
@@ -93,7 +90,6 @@ function AppContent() {
                 </ProtectedRoute>
               }
             />
-
             {/* Protected Owner Dashboard Routes (Owner & Admin only) */}
             <Route
               path="/owner"
@@ -155,7 +151,6 @@ function AppContent() {
                 </ProtectedRoute>
               }
             />
-
             {/* Protected Admin Dashboard Routes (Admin only) */}
             <Route
               path="/admin"
@@ -189,21 +184,17 @@ function AppContent() {
                 </ProtectedRoute>
               }
             />
-
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-
           {/* Theme Selector Modal */}
           <ThemeSelectorModal
             isOpen={isThemeModalOpen}
             onClose={() => setIsThemeModalOpen(false)}
             onNotify={showToast}
           />
-
           {/* Slide-over Saved Stays Wishlist Drawer */}
           <WishlistDrawer />
-
           {/* Floating Aesthetic Toast Notification */}
           <Toast toast={activeToast} onClose={() => setActiveToast(null)} />
         </div>
