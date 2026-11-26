@@ -5,8 +5,7 @@ import Room from "../models/Room.js";
 import User from "../models/User.js";
 
 /**
- * Generate a unique, readable booking reference.
- * Format: SE-XXXXXXXX  (8 chars, deterministic per timestamp)
+ * Generate a unique, readable booking reference. Format: SE-XXXXXXXX  (8 chars, deterministic per timestamp)
  */
 function generateReference() {
   const ts  = Date.now().toString(36).toUpperCase();
@@ -16,28 +15,23 @@ function generateReference() {
 
 /**
  * Get bookings for the authenticated user
- * GET /api/bookings/my
  */
 export async function getMyBookings(req, res, next) {
   try {
     const userId    = req.user?._id || req.user?.id;
     const userEmail = req.user?.email?.toLowerCase();
-
     const orConditions = [];
     if (userId)    orConditions.push({ userId: String(userId) });
     if (userId && /^[0-9a-fA-F]{24}$/.test(String(userId))) {
       orConditions.push({ userId });
     }
     if (userEmail) orConditions.push({ "guestDetails.email": userEmail });
-
     if (orConditions.length === 0) {
       return res.status(400).json({ success: false, message: "User identity not found." });
     }
-
     const bookings = await Booking.find({ $or: orConditions })
       .sort({ createdAt: -1 })
       .lean();
-
     return res.status(200).json({ success: true, count: bookings.length, bookings });
   } catch (error) {
     next(error);
@@ -46,7 +40,6 @@ export async function getMyBookings(req, res, next) {
 
 /**
  * Get all bookings (admin only)
- * GET /api/bookings
  */
 export async function getAllBookings(req, res, next) {
   try {
@@ -59,13 +52,11 @@ export async function getAllBookings(req, res, next) {
 
 /**
  * Get single booking by MongoDB ObjectId, legacyId, or reference
- * GET /api/bookings/:id
  */
 export async function getBookingById(req, res, next) {
   try {
     const { id } = req.params;
     let booking = null;
-
     if (/^[0-9a-fA-F]{24}$/.test(id)) {
       booking = await Booking.findById(id).lean();
     }
@@ -75,7 +66,6 @@ export async function getBookingById(req, res, next) {
     if (!booking) {
       booking = await Booking.findOne({ reference: id.toUpperCase() }).lean();
     }
-
     if (!booking) {
       return res.status(404).json({ success: false, message: `Booking ${id} was not found.` });
     }
@@ -90,7 +80,6 @@ export async function getBookingById(req, res, next) {
         return res.status(403).json({ success: false, message: "Unauthorized to view this booking." });
       }
     }
-
     return res.status(200).json({ success: true, booking });
   } catch (error) {
     next(error);
