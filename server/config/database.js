@@ -46,10 +46,7 @@ export function getDBStatus() {
   };
 }
 
-/**
- * Connect strictly to MongoDB Atlas Cloud Database.
- * No JSON fallback is permitted. Server startup aborts if Atlas cannot connect.
- */
+
 export async function connectDB(options = {}) {
   const uri = options.uri !== undefined ? options.uri : config.MONGODB_URI;
   const timeoutMs = options.timeoutMs || 10000;
