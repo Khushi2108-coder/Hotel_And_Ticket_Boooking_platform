@@ -60,7 +60,6 @@ export default function Booking({ onNotify }) {
   const subtotal = roomPrice * nights * Number(rooms);
   const taxes = Math.round(subtotal * 0.12);
 
-  // 1 Point = 1 INR website discount (max up to 500 points or 50% of subtotal)
   const maxRedeemablePoints = Math.min(userPoints, 500, Math.floor(subtotal * 0.5));
   const pointsDiscount = redeemPoints ? maxRedeemablePoints : 0;
   const total = Math.max(0, subtotal + taxes - pointsDiscount);
