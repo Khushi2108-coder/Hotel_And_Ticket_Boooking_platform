@@ -1,6 +1,6 @@
 # 🏨 StayEase — Full Stack Hotel Ticket Booking System
 
-A modern, production-grade Full-Stack Hotel Reservation Web Application built with **React (Frontend)** and **Node.js + Express.js (Backend REST API)**, styled with **Tailwind CSS & Vanilla CSS**, and powered by persistent data storage.
+A modern, production-grade Full-Stack Hotel Reservation Web Application built with **React (Frontend)** and **Node.js + Express.js (Backend REST API)**, styled with **Tailwind CSS & Vanilla CSS**, and powered by persistent data storage by MongoDB.
 
 ---
 
