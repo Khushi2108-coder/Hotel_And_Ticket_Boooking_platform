@@ -2,10 +2,7 @@ import InventoryDay from "../models/InventoryDay.js";
 import Room from "../models/Room.js";
 import { getDatesInRange, toMidnightUTC } from "../utils/dateUtils.js";
 
-/**
- * Check if requested rooms are available for all dates in range.
- * Returns { available: boolean, minAvailable: number, dateMap: {} }
- */
+
 export async function checkAvailability(roomId, checkIn, checkOut, requestedRooms = 1) {
   const room = await Room.findById(roomId);
   if (!room || !room.isActive) {
@@ -49,10 +46,7 @@ export async function checkAvailability(roomId, checkIn, checkOut, requestedRoom
   };
 }
 
-/**
- * Atomically decrement inventory within a MongoDB session/transaction.
- * Returns { success: boolean, failedDate?: string }
- */
+
 export async function decrementInventory(roomId, hotelId, dates, rooms, session, totalInventory) {
   for (const date of dates) {
     const result = await InventoryDay.findOneAndUpdate(
