@@ -47,10 +47,8 @@ export default function Booking({ onNotify }) {
 
   const nights = useMemo(() => {
     if (!checkIn || !checkOut) return 0;
-
     const start = new Date(`${checkIn}T00:00:00`);
     const end = new Date(`${checkOut}T00:00:00`);
-
     const diffDays = Math.round((end.getTime() - start.getTime()) / 86400000);
     if (diffDays === 0) return 1; // Single-day / Day-Use stay
     return Math.max(0, diffDays);
@@ -132,7 +130,6 @@ export default function Booking({ onNotify }) {
       total,
       createdAt: new Date().toISOString(),
     };
-
     setIsSubmitting(true);
     localStorage.setItem("stayeasePendingBooking", JSON.stringify(bookingPayload));
     if (onNotify) {
@@ -317,7 +314,6 @@ export default function Booking({ onNotify }) {
                     <option value="18:00">06:00 PM (Evening)</option>
                   </select>
                 </div>
-
                 <div>
                   <label htmlFor="booking-checkout-time" className="mb-1 block text-xs font-medium dark:text-[#f0f4f0]">
                     Check-out Departure Time
@@ -334,7 +330,6 @@ export default function Booking({ onNotify }) {
                     <option value="20:00">08:00 PM (Late Evening)</option>
                   </select>
                 </div>
-
                 <div>
                   <label htmlFor="booking-guests" className="mb-1 block text-xs font-medium dark:text-[#f0f4f0]">
                     Total Guests
@@ -352,7 +347,6 @@ export default function Booking({ onNotify }) {
                     ))}
                   </select>
                 </div>
-
                 <div>
                   <label htmlFor="booking-rooms" className="mb-1 block text-xs font-medium dark:text-[#f0f4f0]">
                     Number of Rooms
@@ -372,7 +366,6 @@ export default function Booking({ onNotify }) {
                 </div>
               </div>
             </div>
-
             {/* 3. StayEase Website Points & Discount */}
             <div className="border-t border-[#e9e6df] pt-6 dark:border-[#2a3c30]">
               <div className="flex flex-wrap items-center justify-between gap-2">
@@ -383,7 +376,6 @@ export default function Booking({ onNotify }) {
                   ✦ {userPoints} Points in Your Balance
                 </span>
               </div>
-
               <div className="mt-4 rounded-2xl border border-[#d9ceb9] bg-[#fdfbf7] p-4.5 dark:border-[#384a3c] dark:bg-[#121c16]">
                 <div className="flex items-start gap-3">
                   <input
@@ -404,7 +396,6 @@ export default function Booking({ onNotify }) {
                 </div>
               </div>
             </div>
-
             {error && (
               <p role="alert" className="rounded-xl border border-[#e8d8c9] bg-[#fbf4ec] p-3 text-xs leading-5 text-[#85553b] dark:bg-[#2b1919] dark:text-[#ff9999] dark:border-[#522]">
                 {error}
@@ -426,7 +417,6 @@ export default function Booking({ onNotify }) {
               )}
             </button>
           </form>
-
           {/* Right Summary Sidebar */}
           <aside className="h-fit rounded-3xl border border-[#e9e6df] bg-white p-6 shadow-sm dark:border-[#2a3c30] dark:bg-[#152019] lg:sticky lg:top-24">
             <img
@@ -434,7 +424,6 @@ export default function Booking({ onNotify }) {
               alt={roomName}
               className="h-44 w-full rounded-2xl object-cover shadow-2xs"
             />
-
             <div className="mt-4">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-[#b18a57] dark:text-[#e6c587]">
                 Selected Retreat
@@ -446,7 +435,6 @@ export default function Booking({ onNotify }) {
                 📍 {hotel.city || hotel.location}
               </p>
             </div>
-
             <div className="mt-4 border-t border-[#e9e6df] pt-4 dark:border-[#2a3c30]">
               <p className="text-sm font-semibold text-[#244b38] dark:text-[#34d399]">
                 {roomName}
@@ -457,7 +445,6 @@ export default function Booking({ onNotify }) {
                 </p>
               )}
             </div>
-
             <div className="mt-4 space-y-2.5 border-t border-[#e9e6df] pt-4 text-xs dark:border-[#2a3c30]">
               {isSameDay && (
                 <div className="flex justify-between font-medium text-[#244b38] dark:text-[#34d399]">
