@@ -6,15 +6,10 @@ import User from "../models/User.js";
 import Hotel from "../models/Hotel.js";
 
 const router = Router();
-
-// Protect ALL admin routes – require authentication and role "admin"
 router.use(protect);
 router.use(authorizeRoles("admin"));
 
-/**
- * GET /api/admin/dashboard
- * Administrative overview statistics
- */
+
 router.get("/dashboard", async (req, res, next) => {
   try {
     const totalUsers  = await User.countDocuments();
