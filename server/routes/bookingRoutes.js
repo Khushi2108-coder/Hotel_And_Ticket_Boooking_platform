@@ -1,12 +1,5 @@
 import { Router } from "express";
-import {
-  getMyBookings,
-  getAllBookings,
-  getBookingById,
-  createBooking,
-  updateBooking,
-  cancelBooking,
-} from "../controllers/bookingController.js";
+import { getMyBookings, getAllBookings, getBookingById, createBooking, updateBooking, cancelBooking } from "../controllers/bookingController.js";
 import { protect, optionalAuth } from "../middleware/authMiddleware.js";
 import { validateBooking } from "../middleware/validationMiddleware.js";
 
